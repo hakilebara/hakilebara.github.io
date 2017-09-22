@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Building a jsonapi.org API with Phoenix 1.3"
-date:   2017-08-29 10:02:44 +0200
+title: Building a jsonapi.org API with Phoenix 1.3
+date: '2017-08-29 10:02:44 +0200'
 categories: elixir phoenix jsonapi
 published: false
 ---
@@ -48,6 +48,7 @@ mix deps.clean plug --build
 mix deps.get
 ```
 
+To use the Phoenix accepts plug you must configure Plug to handle the "application/vnd.api+json" mime type and Phoenix to serialize json-api with Poison.
 ```ruby
 # myapp/lib/myapp_web/router.ex
 defmodule MyappWeb.Router do
