@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Loading Partial Models with Emberjs"
-date:   2017-08-22 13:04:44 +0200
+title: Loading Partial Models with Emberjs
+date: '2017-08-22 13:04:44 +0200'
 categories: emberjs ember-data jsonapi
 published: true
 ---
