@@ -31,7 +31,7 @@ end
 
 
 `mix deps.get`
-
+To use the Phoenix accepts plug you must configure Plug to handle the "application/vnd.api+json" mime type and Phoenix to serialize json-api with Poison.
 
 ```ruby
 # myapp/config/config.exs
@@ -48,7 +48,7 @@ mix deps.clean plug --build
 mix deps.get
 ```
 
-To use the Phoenix accepts plug you must configure Plug to handle the "application/vnd.api+json" mime type and Phoenix to serialize json-api with Poison.
+
 ```ruby
 # myapp/lib/myapp_web/router.ex
 defmodule MyappWeb.Router do
