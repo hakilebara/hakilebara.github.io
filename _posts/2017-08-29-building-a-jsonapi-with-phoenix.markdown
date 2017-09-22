@@ -6,25 +6,325 @@ categories: elixir phoenix jsonapi
 published: false
 ---
 
-{% highlight bash %}
-mix phx.new myapp --no-html --no-brunch
-{% endhighlight %}
+
+```mix phx.new myapp --no-html --no-brunch```
+
 
 ![Imgur](http://i.imgur.com/QZZ7AKo.png)
 
-{% highlight bash %}
+```bash
 cd myapp
 mix ecto.create
 iex -S mix phoenix.server
-{% endhighlight %}
+```
+
+```ruby
+# myapp/mix.exs
+defp deps do
+  [
+    # ...
+      {:ja_serializer, "~> x.x.x"}
+    # ...
+  ]
+end
+```
+
+
+`mix deps.get`
+
+
+```ruby
+# myapp/config/config.exs
+config :phoenix, :format_encoders,
+  "json-api": Poison
+
+config :mime, :types, %{
+  "application/vnd.api+json" => ["json-api"]
+}
+```
+
+```bash
+mix deps.clean plug --build
+mix deps.get
+```
+
+```ruby
+# myapp/lib/myapp_web/router.ex
+defmodule MyappWeb.Router do
+  use MyappWeb, :router
+
+  pipeline :api do
+    plug :accepts, ["json-api"]
+  end
+
+  scope "/api", MyappWeb do
+    pipe_through :api
+  end
+end
+```
+
+`mix phx.gen.json Assets Image images name:string url:string position:integer`
+
+```ruby
+defmodule MyappWeb.Router do
+  use MyappWeb, :router
+
+  pipeline :api do
+    plug :accepts, ["json-api"]
+    plug JaSerializer.ContentTypeNegotiation
+    plug JaSerializer.Deserializer
+  end
+
+  scope "/api", MyappWeb do
+    pipe_through :api
+
+    resources "/images", ImageController, except: [:new, :edit]
+  end
+
+end```
+
+
+`mix ecto.migrate`
 
 
 
 
-{% highlight elixir %}
+```ruby
+alias Myapp.Repo
+alias Myapp.Assets.Image
 
-{% endhighlight %}
+[
+  %Image{
+    name: "image 1",
+    url: "",
+    position: 1,
+  },
+  %Image{
+    name: "image 2",
+    url: "",
+    position: 2,
+  },
+  %Image{
+    name: "image 3",
+    url: "",
+    position: 3,
+  },
+  %Image{
+    name: "image 4",
+    url: "",
+    position: 4,
+  }
+] |> Enum.each(&Repo.insert!(&1))
+```
+
+Notice the exclamation mark after `insert`, this means that the function will throw and error if something goes wrong.
 
 
-{% highlight bash %}
-{% endhighlight %}
+`mix run priv/repo/seeds.exs`
+
+
+`curl -sH "Accept: application/vnd.api+json" http://localhost:4003/api/images | python -m json.tool`
+
+Here we use a python one-liner to prettify the curl output.
+
+```json
+{
+    "data": [
+        {
+            "id": 1,
+            "name": "image 1",
+            "position": 1,
+            "url": ""
+        },
+        {
+            "id": 2,
+            "name": "image 2",
+            "position": 2,
+            "url": ""
+        },
+        {
+            "id": 3,
+            "name": "image 3",
+            "position": 3,
+            "url": ""
+        },
+        {
+            "id": 4,
+            "name": "image 4",
+            "position": 4,
+            "url": ""
+        }
+    ]
+}
+```
+It works! However the json format does not follow the jsonapi.org spec.
+
+
+Now we want our images to be part of a gallery
+
+TODO: Explain one-to-many relationship with graph
+
+
+`mix phx.gen.json Assets Gallery galleries name:string`
+
+![Imgur](http://i.imgur.com/dBe486G.png)
+
+Choose yes
+
+Generate a migration. (what's a migration)
+
+`mix ecto.gen.migration add_field_to_images`
+
+Add the resource to your :api scope in lib/myapp_web/router.ex
+
+```ruby
+#lib/myapp_web/router.ex
+defmodule MyappWeb.Router do
+  use MyappWeb, :router
+
+  pipeline :api do
+    plug :accepts, ["json-api"]
+    plug JaSerializer.ContentTypeNegotiation
+    plug JaSerializer.Deserializer
+  end
+
+  scope "/api", MyappWeb do
+    pipe_through :api
+
+    resources "/images", ImageController, except: [:new, :edit]
+    resources "/galleries", GalleryController, except: [:new, :edit]
+  end
+
+end
+```
+
+`mix ecto.migrate`
+
+```ruby
+#priv/repo/migrations/TIMESTAMP_add_field_to_images.exs
+
+defmodule Myapp.Repo.Migrations.AddFieldToImages do
+  use Ecto.Migration
+
+  def change do
+    alter table("images") do
+      add :gallery_id, references(:galleries, on_delete: :delete_all)
+    end
+  end
+end```
+
+
+> Note: You may be wondering where are all these keywords, 'alter', 'scope', 'pipeline', etc. from. They not part of the Elixir standard library. They are called 'macros'.
+
+
+`mix ecto.migrate`
+
+![Imgur](http://i.imgur.com/5G5FiYc.png)
+
+The field gallery_id has been added to the `images` table along with a foreign key and a delete constraint.
+
+```ruby
+defmodule Myapp.Assets.Gallery do
+  use Ecto.Schema
+  import Ecto.Changeset
+  alias Myapp.Assets.Gallery
+  alias Myapp.Assets.Image
+
+
+  schema "galleries" do
+    field :name, :string
+    has_many :images, Image
+
+    timestamps()
+  end
+
+  @doc false
+  def changeset(%Gallery{} = gallery, attrs) do
+    gallery
+    |> cast(attrs, [:name])
+    |> validate_required([:name])
+  end
+end```
+
+
+```ruby
+defmodule Myapp.Assets.Image do
+  use Ecto.Schema
+  import Ecto.Changeset
+  alias Myapp.Assets.Image
+  alias Myapp.Assets.Gallery
+
+  schema "images" do
+    field :name, :string
+    field :position, :integer
+    field :url, :string
+    belongs_to :gallery, Gallery
+
+    timestamps()
+  end
+
+  @doc false
+  def changeset(%Image{} = image, attrs) do
+    image
+    |> cast(attrs, [:name, :url, :position])
+    |> validate_required([:name, :url, :position])
+  end
+end```
+
+```ruby
+alias Myapp.Repo
+alias Myapp.Assets.Image
+alias Myapp.Assets.Gallery
+
+Repo.delete_all Image
+Repo.delete_all Gallery
+[
+  %Gallery{
+    name: "image 1",
+    images: [
+      %Image{
+        name: "image 1",
+        url: "",
+        position: 1,
+      },
+      %Image{
+        name: "image 2",
+        url: "",
+        position: 2,
+      },
+      %Image{
+        name: "image 3",
+        url: "",
+        position: 3,
+      },
+      %Image{
+        name: "image 4",
+        url: "",
+        position: 4,
+      },
+      %Image{
+        name: "image 5",
+        url: "",
+        position: 6,
+      },
+      %Image{
+        name: "image 6",
+        url: "",
+        position: 6,
+      }
+    ]
+  },
+] |> Enum.each(&Repo.insert!(&1))```
+
+
+`mix run priv/repo/seeds.exs`
+
+Then configure ja_serializer in both gallery and image views
+
+
+Install Ember and generate project
+
+```
+ember help generate model
+ember g model gallery name:string images:has-many:image
+ember g model image name:string url:string position:number gallery:belongs-to:gallery```
