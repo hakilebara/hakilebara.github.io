@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "TIL how to change Phoenix development server port"
+type: til
 date:   2017-08-29 10:04:44 +0200
 categories: til elixir phoenix
 published: true

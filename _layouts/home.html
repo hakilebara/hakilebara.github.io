@@ -1,50 +1,38 @@
 ---
-layout: default
+layout: link-list
 ---
 
+  <ul class="post-list">
+    {% for post in site.posts %}
+      <li class="list-item">
+        {% assign date_format = site.minima.date_format | default: "%-d %B %Y" %}
+        <span class="post-meta">
+          {{ post.date | date: date_format }} 
+          {% case post.type %}
+            {% when 'codepen-pen'%}
+            <svg width="28" height="28" class="icon codepen">
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#codepen-logo"></use>
+            </svg>
+            <strong>Pen at codepen.io</strong>
+            {% when 'til'%}
+              <strong>•  Today I Learned •</strong>
+            {% else %}
+              <strong>•  Article  •</strong>
+          {% endcase %}
+        </span>
+        {% if post.link %}
+          <h2>
+            <a class="post-link" href="{{ post.link }}" target="_blank"> {{ post.title | escape }} </a>
+          </h2>
+        {% else %}
+          <h2>
+            <a class="post-link" href="{{ post.url | relative_url }}"> {{ post.title | escape }} </a>
+          </h2>
+        {% endif %}
+      </li>
+    {% endfor %}
 
-<div class="home">
-  
-  <section id="home-intro" class="home__intro">
-    <div class="home__container">
-      <h1 class="home__intro__title">I help small businesses build web applications.</h1>
-      <p class="home__intro__text"><strong class="home__intro__text--emphasis">Hi, I'm Frederic (@hakilebara)</strong>, a consultant based in Paris. I work exclusively with small businesses. I focus on building custom web and mobile products.
-      </p>
-    </div>
-  </section>
-  <!--<hr>-->
-  <section class="home__content">
-    <div class="home__container">
-
-      <h2 class="home__content__title">What I can do.</h2>
-      <div class="home__content__what-i-can-do">
-        <div class="home__content__icons-vert home__content__design-icons-vert"></div>
-        <div class="home__content__wrapper">
-          <h3 class="home__content__subtitle">I design what you want.</h3>
-          <p class="home__content__text">
-          I take the time to understand your users.
-          I focus on typography, colors and content to deliver a great user experience.
-          </p>
-        </div>
-      </div>
-
-      <div class="home__content__what-i-can-do">
-        <div class="home__content__icons-vert home__content__dev-icons-vert"></div>
-        <div class="home__content__wrapper">
-          <h3 class="home__content__subtitle">I develop what you need.</h3>
-          <p class="home__content__text">Using a mobile-first approach, I develop the solution you need whether it's an e-commerce shop, a marketing website, a Wordpress CMS or a custom platform.</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-  <!--<hr>-->
-  <section class="home__hire-me">
-    <div class="home__container">
-      <h2 class="home__hire-me__title">Hire me.</h2>
-      <h3 class="home__hire-me__subtitle">I am currently available for freelance work.</h3>
-      <h3 class="home__hire-me__text">Let's work together : <a href="mailto:frederic.soumare@gmail.com" class="home__hire-me__message-me">message me</a> </h3>
-    </div>
-  </section>
-</div>  
-
+    <li>
+      <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
+    </li>
+  </ul>

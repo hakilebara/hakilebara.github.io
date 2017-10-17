@@ -45,6 +45,7 @@ GEM
 
 PLATFORMS
   ruby
+  universal-darwin-16
   x86_64-darwin-16
 
 DEPENDENCIES
@@ -52,7 +53,7 @@ DEPENDENCIES
   jekyll-feed (~> 0.6)
 
 RUBY VERSION
-   ruby 2.3.1p112
+   ruby 2.0.0p648
 
 BUNDLED WITH
-   1.14.1
+   1.14.5
