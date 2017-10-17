@@ -28,6 +28,7 @@ permalink: /post/:year/:month/:day/:title
 
 # Build settings
 markdown: kramdown
+google_analytics: UA-107401182-2
 gems:
   - jekyll-feed
 exclude:
