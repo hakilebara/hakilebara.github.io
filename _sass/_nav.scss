@@ -4,10 +4,11 @@
   height: $nav-height;
   max-width: 1320px;
   padding: 0 60px;
-  @media (max-width: 500px) {
+  @media (max-width: 499px) {
     justify-content: space-around;
     flex-direction: column;
     height: 160px;
+    padding: 0 30px;
   }
 
   a {
@@ -26,6 +27,11 @@
 }
 .nav__links {
   margin-left: auto;
+  @media (max-width: 499px) {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
 }
 
 .nav__link {
@@ -36,5 +42,10 @@
   transition: .2s;
   &:hover {
     box-shadow: 0 1px 0 0 #343434;
+  }
+  @media (max-width: 499px) {
+    margin: 0;
+    // margin-bottom: 2px;
+    text-align: center;
   }
 }

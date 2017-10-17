@@ -7,12 +7,19 @@
 .page,
 .post {
   padding-top: 120px; 
+  @media (max-width: 499px) {
+    padding-top: 30px; 
+  }
 }
 
 .post-list {
   max-width: calc(#{$content-width} - (#{$spacing-unit} * 2));
   padding-top: 40px;
   padding-left: 60px;
+  @media (max-width: 499px) {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
 }
 .list-item {
   margin-bottom: 10px;
