@@ -199,10 +199,6 @@ TODO: Explain one-to-many relationship with graph
 
 Choose yes
 
-Generate a migration. (what's a migration)
-
-`mix ecto.gen.migration add_field_to_images`
-
 Add the resource to your :api scope in lib/myapp_web/router.ex
 
 ```ruby
@@ -225,6 +221,12 @@ defmodule MyappWeb.Router do
 
 end
 ```
+
+
+Generate a migration. (what's a migration)
+
+`mix ecto.gen.migration add_field_to_images`
+
 
 `mix ecto.migrate`
 
