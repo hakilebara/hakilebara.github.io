@@ -7,8 +7,9 @@ published: false
 ---
 
 
-```mix phx.new myapp --no-html --no-brunch```
+```mix phx.new myapp --no-html --no-brunch --database=mysql```
 
+I am using MySQL here because I am familiar with it. If you don't specify a '--database' option, Phoenix will expect a PostgreSQL database by default.
 
 ![Imgur](http://i.imgur.com/QZZ7AKo.png)
 
@@ -17,6 +18,8 @@ cd myapp
 mix ecto.create
 iex -S mix phoenix.server
 ```
+
+`mix ecto create` will create database a database called `myapp_dev`. 
 
 ```ruby
 # myapp/mix.exs
@@ -49,8 +52,9 @@ mix deps.get
 ```
 
 
-```ruby
+```elixir
 # myapp/lib/myapp_web/router.ex
+
 defmodule MyappWeb.Router do
   use MyappWeb, :router
 
