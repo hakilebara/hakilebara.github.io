@@ -30,7 +30,7 @@ iex -S mix phoenix.server
 To emit json-api payloads I will be using the [vt-elixir/ja_serializer](https://github.com/vt-elixir/ja_serializer) library.
 As of today there are only two Elixir server libraries that implements the json-api spec. I chose ja_serializer because it looks more popular and better documented than [jeregrine/jsonapi](https://github.com/jeregrine/jsonapi).
 
-```elixir
+```ruby
 # myapp/mix.exs
 
 defp deps do
@@ -49,7 +49,7 @@ Replace `0.12.0` with the latest version of the library.
 
 You need to tell Phoenix how to handle the "application/vnd.api+json" mime type.
 
-```elixir
+```ruby
 # myapp/config/config.exs
 
 config :phoenix, :format_encoders,
@@ -66,7 +66,7 @@ mix deps.get
 ```
 
 
-```elixir
+```ruby
 # myapp/lib/myapp_web/router.ex
 
 defmodule MyappWeb.Router do
@@ -87,7 +87,7 @@ end
 
 `mix phx.gen.json Assets Image images name:string url:string position:integer`
 
-```elixir
+```ruby
 # myapp/lib/myapp_web/router.ex
 
 defmodule MyappWeb.Router do
@@ -114,7 +114,7 @@ end
 ## generating fake data
 
 
-```elixir
+```ruby
 # myapp/priv/repo/seeds.exs
 
 alias Myapp.Repo
@@ -205,7 +205,7 @@ Generate a migration. (what's a migration)
 
 Add the resource to your :api scope in lib/myapp_web/router.ex
 
-```elixir
+```ruby
 #lib/myapp_web/router.ex
 defmodule MyappWeb.Router do
   use MyappWeb, :router
