@@ -205,7 +205,7 @@ Generate a migration. (what's a migration)
 
 Add the resource to your :api scope in lib/myapp_web/router.ex
 
-```ruby
+```elixir
 #lib/myapp_web/router.ex
 defmodule MyappWeb.Router do
   use MyappWeb, :router
@@ -239,7 +239,8 @@ defmodule Myapp.Repo.Migrations.AddFieldToImages do
       add :gallery_id, references(:galleries, on_delete: :delete_all)
     end
   end
-end```
+end
+```
 
 
 > Note: You may be wondering where are all these keywords, 'alter', 'scope', 'pipeline', etc. from. They not part of the Elixir standard library. They are called 'macros'.
@@ -272,7 +273,8 @@ defmodule Myapp.Assets.Gallery do
     |> cast(attrs, [:name])
     |> validate_required([:name])
   end
-end```
+end
+```
 
 
 ```ruby
