@@ -31,6 +31,10 @@ iex -S mix phoenix.server
 
 ![Imgur](https://i.imgur.com/39SW7a5.png)
 
+## generating resources
+
+`mix phx.gen.json Assets Image images name:string url:string position:integer`
+
 ## installing dependencies
 
 To emit json-api payloads I will be using the [vt-elixir/ja_serializer](https://github.com/vt-elixir/ja_serializer) library.
