@@ -6,6 +6,10 @@ categories: elixir phoenix jsonapi
 published: false
 ---
 
+In this post I will document my experience of building a barebones API using Phoenix 1.3. The API will follow the [jsonapi.org](jsonapi.org) specification.
+
+## setting up a pure api project with Phoenix
+
 
 ```mix phx.new myapp --no-html --no-brunch --database=mysql```
 
@@ -21,23 +25,33 @@ iex -S mix phoenix.server
 
 `mix ecto create` will create database a database called `myapp_dev`. 
 
-```ruby
+## installing dependencies
+
+To emit json-api payloads I will be using the [vt-elixir/ja_serializer](https://github.com/vt-elixir/ja_serializer) library.
+As of today there are only two Elixir server libraries that implements the json-api spec. I chose ja_serializer because it looks more popular and better documented than [jeregrine/jsonapi](https://github.com/jeregrine/jsonapi).
+
+```elixir
 # myapp/mix.exs
+
 defp deps do
   [
     # ...
-      {:ja_serializer, "~> x.x.x"}
+      {:ja_serializer, "~> 0.12.0"},
     # ...
   ]
 end
 ```
-
+Replace `0.12.0` with the latest version of the library.
 
 `mix deps.get`
-To use the Phoenix accepts plug you must configure Plug to handle the "application/vnd.api+json" mime type and Phoenix to serialize json-api with Poison.
 
-```ruby
+## configuration
+
+You need to tell Phoenix how to handle the "application/vnd.api+json" mime type.
+
+```elixir
 # myapp/config/config.exs
+
 config :phoenix, :format_encoders,
   "json-api": Poison
 
@@ -68,9 +82,14 @@ defmodule MyappWeb.Router do
 end
 ```
 
+
+## generating resources
+
 `mix phx.gen.json Assets Image images name:string url:string position:integer`
 
-```ruby
+```elixir
+# myapp/lib/myapp_web/router.ex
+
 defmodule MyappWeb.Router do
   use MyappWeb, :router
 
@@ -86,15 +105,18 @@ defmodule MyappWeb.Router do
     resources "/images", ImageController, except: [:new, :edit]
   end
 
-end```
+end
+```
 
 
 `mix ecto.migrate`
 
+## generating fake data
 
 
+```elixir
+# myapp/priv/repo/seeds.exs
 
-```ruby
 alias Myapp.Repo
 alias Myapp.Assets.Image
 
@@ -127,6 +149,7 @@ Notice the exclamation mark after `insert`, this means that the function will th
 
 `mix run priv/repo/seeds.exs`
 
+## testing our API with curl
 
 `curl -sH "Accept: application/vnd.api+json" http://localhost:4003/api/images | python -m json.tool`
 
