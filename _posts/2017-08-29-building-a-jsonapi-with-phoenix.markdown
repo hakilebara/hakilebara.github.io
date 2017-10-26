@@ -6,14 +6,16 @@ categories: elixir phoenix jsonapi
 published: false
 ---
 
-In this post I will document my experience of building a barebones API using Phoenix 1.3. The API will follow the [jsonapi.org](jsonapi.org) specification.
+In this post I will document my experience building an image gallery API using Phoenix 1.3. The API will follow the [jsonapi.org](jsonapi.org) specification.
 
-## setting up a pure api project with Phoenix
+## setting up a barebones api project with Phoenix
 
 
 ```mix phx.new myapp --no-html --no-brunch --database=mysql```
 
-I am using MySQL here because I am familiar with it. If you don't specify a '--database' option, Phoenix will expect a PostgreSQL database by default.
+`--no-html` and `--no-brunch` because there is no need for html templates nor an asset pipeline. 
+
+I will use MySQL here because I am familiar with it. If you don't specify a '--database' option, Phoenix will expect a PostgreSQL database by default.
 
 ![Imgur](http://i.imgur.com/QZZ7AKo.png)
 
@@ -25,10 +27,14 @@ iex -S mix phoenix.server
 
 `mix ecto create` will create database a database called `myapp_dev`. 
 
+## the data model
+
+![Imgur](https://i.imgur.com/39SW7a5.png)
+
 ## installing dependencies
 
 To emit json-api payloads I will be using the [vt-elixir/ja_serializer](https://github.com/vt-elixir/ja_serializer) library.
-As of today there are only two Elixir server libraries that implements the json-api spec. I chose ja_serializer because it looks more popular and better documented than [jeregrine/jsonapi](https://github.com/jeregrine/jsonapi).
+As of today there are only two Elixir server libraries that implements the json-api spec. I don't know how the two compare but I will choose ja_serializer because it looks better documented than [jeregrine/jsonapi](https://github.com/jeregrine/jsonapi).
 
 ```ruby
 # myapp/mix.exs
