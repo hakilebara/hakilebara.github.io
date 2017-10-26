@@ -299,7 +299,8 @@ defmodule Myapp.Assets.Image do
     |> cast(attrs, [:name, :url, :position])
     |> validate_required([:name, :url, :position])
   end
-end```
+end
+```
 
 ```ruby
 alias Myapp.Repo
@@ -344,7 +345,8 @@ Repo.delete_all Gallery
       }
     ]
   },
-] |> Enum.each(&Repo.insert!(&1))```
+] |> Enum.each(&Repo.insert!(&1))
+```
 
 
 `mix run priv/repo/seeds.exs`
@@ -357,4 +359,5 @@ Install Ember and generate project
 ```
 ember help generate model
 ember g model gallery name:string images:has-many:image
-ember g model image name:string url:string position:number gallery:belongs-to:gallery```
+ember g model image name:string url:string position:number gallery:belongs-to:gallery
+```
