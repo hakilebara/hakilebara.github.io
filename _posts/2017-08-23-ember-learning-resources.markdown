@@ -1,9 +1,12 @@
 ---
-layout: post
-title:  "Great Ember learning Resources"
-date:   2017-08-23 13:04:44 +0200
-categories: emberjs ember-data jsonapi
+title: Great Ember learning Resources
+date: 2017-08-23 11:04:44 Z
 published: false
+categories:
+- emberjs
+- ember-data
+- jsonapi
+layout: post
 ---
 
 Here is a list of ember learning resources that helped me

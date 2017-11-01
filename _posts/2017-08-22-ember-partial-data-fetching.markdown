@@ -1,9 +1,11 @@
 ---
-layout: post
 title: Loading Partial Models with Emberjs
-date: '2017-08-22 13:04:44 +0200'
-categories: emberjs ember-data jsonapi
-published: true
+date: 2017-08-22 11:04:44 Z
+categories:
+- emberjs
+- ember-data
+- jsonapi
+layout: post
 ---
 
 Problem: How can I fetch an index of shallow models and flesh them out when needed?

@@ -1,12 +1,13 @@
 ---
+title: TIL how to change Phoenix development server port
+date: 2017-08-29 08:04:44 Z
+categories:
+- til
+- elixir
+- phoenix
 layout: post
-title:  "TIL how to change Phoenix development server port"
 type: til
-date:   2017-08-29 10:04:44 +0200
-categories: til elixir phoenix
-published: true
 ---
-
 
 You can run your Phoenix dev server on a different port that tcp/4000.
 

@@ -1,9 +1,12 @@
 ---
-layout: post
 title: Building a jsonapi.org API with Phoenix 1.3
-date: '2017-08-29 10:02:44 +0200'
-categories: elixir phoenix jsonapi
+date: 2017-08-29 08:02:44 Z
 published: false
+categories:
+- elixir
+- phoenix
+- jsonapi
+layout: post
 ---
 
 In this post I will document my experience building an image gallery API using Phoenix 1.3. The API will follow the [jsonapi.org](jsonapi.org) specification.
