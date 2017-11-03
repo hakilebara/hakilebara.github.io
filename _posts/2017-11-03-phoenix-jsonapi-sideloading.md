@@ -1,13 +1,13 @@
 ---
 title: Phoenix Jsonapi Sideloading
-date: 2017-11-03 00:00:00 Z
+date: {}
 published: false
 ---
 
 ## TIL how to sideload JSON-API relationships with Phoenix 1.3
 
 ```elixir
-# lib/myapp_web/controllers/album_controller.ex
+# lib/myapp_web/controllers/post_controller.ex
 
   def show(conn, %{"id" => id, "include" => include }) do
     post = Blog.get_post!(id)
