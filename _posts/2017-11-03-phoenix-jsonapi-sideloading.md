@@ -1,6 +1,9 @@
 ---
+title: Phoenix Jsonapi Sideloading
+date: 2017-11-03 00:00:00 Z
 published: false
 ---
+
 ## TIL how to sideload JSON-API relationships with Phoenix 1.3
 
 ```elixir
