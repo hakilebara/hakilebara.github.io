@@ -1,6 +1,6 @@
 ---
 title: Phoenix Jsonapi Sideloading
-date: {}
+date: 2017-11-25 11:04:44 Z
 published: false
 ---
 
