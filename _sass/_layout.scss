@@ -25,10 +25,11 @@
   margin-bottom: 10px;
   padding-bottom: 20px;
 }
-.post {
-  h1 {
-    font-size: 3.75em;
-    line-height: 1.066em;
+.post h1 {
+  font-size: 3.75em;
+  line-height: 1.066em;
+  @media (max-width: 499px) {
+    font-size: 2.75em;
   }
 }
 .post-meta {
