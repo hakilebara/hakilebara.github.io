@@ -1,9 +1,11 @@
 ---
-published: false
+title: Creating A Codemod
+date: 2019-04-11 00:00:00 Z
 categories:
-  - javascript
+- javascript
 layout: post
 ---
+
 # How I created my first codemod
 
 ## What is a codemod?
