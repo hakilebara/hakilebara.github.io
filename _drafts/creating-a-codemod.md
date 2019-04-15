@@ -1,9 +1,10 @@
 ---
 title: Creating A Codemod
-date: 2019-04-11 00:00:00 Z
+date: {}
 categories:
-- javascript
+  - javascript
 layout: post
+published: true
 ---
 
 # How I created my first codemod
@@ -46,4 +47,3 @@ npm install --global codemod-cli
 
 yarn global add codemod-cli
 ```
-
