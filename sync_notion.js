@@ -8,8 +8,7 @@ const notion = new Client({ auth: process.env.NOTION_API_TOKEN })
 const n2m = new NotionToMarkdown({ notionClient: notion, config: { convertImagesToBase64: true } })
 
 const OUTPUT_DIR = '_posts' // Directory to save Markdown files
-const IMAGES_DIR = './assets/img'
-const IMAGES_URL_PATH = '/assets/img'
+const IMAGES_DIR = 'assets/img'
 
 // Custom transformer for image blocks
 n2m.setCustomTransformer('image', async (block) => {
@@ -20,7 +19,6 @@ n2m.setCustomTransformer('image', async (block) => {
   const imageExtension = path.extname(imageUrl).split('?')[0] // Get the image extension from url, can use mime type as well
   const imageName = `${block.id}${imageExtension}` // Use block ID as the image name
   const localImagePath = path.join(IMAGES_DIR, imageName)
-  const urlImagePath = path.join(IMAGES_URL_PATH, imageName)
 
   try {
     // Download the image using fetch
