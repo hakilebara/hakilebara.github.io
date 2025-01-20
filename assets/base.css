@@ -1,0 +1,200 @@
+@charset "utf-8";
+
+/* Define CSS variables */
+:root {
+  --base-font-family: "Source Sans Pro", sans-serif;
+  --base-font-size: 16px;
+  --base-font-weight: 400;
+  --small-font-size: calc(var(--base-font-size) * 0.875);
+  --base-line-height: 1.5;
+
+  --spacing-unit: 30px;
+
+  --text-color: #111;
+  --background-color: #FFF;
+  --brand-color: #424242;
+
+  --grey-color: #828282;
+  --grey-color-light: #d9d9d9; /* lighten(#828282, 40%) */
+  --grey-color-dark: #5e5e5e; /* darken(#828282, 25%) */
+
+  --nav-height: 80px;
+
+  --content-width: 800px;
+
+  --on-palm: 600px;
+  --on-laptop: 800px;
+}
+
+/* Global box-sizing */
+* {
+  box-sizing: border-box;
+}
+
+/* Reset some basic elements */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+hr,
+dl,
+dd,
+ol,
+ul,
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+/* Basic styling */
+body {
+  font: var(--base-font-weight) var(--base-font-size)/var(--base-line-height)
+    var(--base-font-family);
+  color: var(--text-color);
+  background-color: var(--background-color);
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-feature-settings: "kern" 1;
+  -moz-font-feature-settings: "kern" 1;
+  -o-font-feature-settings: "kern" 1;
+  font-feature-settings: "kern" 1;
+  font-kerning: normal;
+}
+
+/* Set margin-bottom for vertical rhythm */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+ul,
+ol,
+dl,
+figure {
+  margin-bottom: calc(var(--spacing-unit) / 2);
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+figure > img {
+  display: block;
+}
+
+figcaption {
+  font-size: var(--small-font-size);
+}
+
+/* Lists */
+ul,
+ol {
+  margin-left: var(--spacing-unit);
+  list-style: none;
+}
+
+li > ul,
+li > ol {
+  margin-bottom: 0;
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--base-font-weight);
+}
+
+h1 {
+  font-size: 2.75em;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 40px;
+  line-height: 50px;
+}
+
+p {
+  font-size: 1.125em;
+}
+
+/* Links */
+a {
+  color: #3C4858;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.social-media-list a:hover {
+  text-decoration: none;
+}
+
+.social-media-list a:hover .username {
+  text-decoration: underline;
+}
+
+/* Blockquotes */
+blockquote {
+  color: var(--grey-color);
+  border-left: 4px solid var(--grey-color-light);
+  padding-left: calc(var(--spacing-unit) / 2);
+  font-size: calc(var(--base-font-size) * 1.125);
+  letter-spacing: -1px;
+  font-style: italic;
+}
+
+blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+/* Code formatting */
+pre,
+code {
+  font-size: calc(var(--base-font-size) * 0.9375);
+  border: 1px solid var(--grey-color-light);
+  border-radius: 3px;
+}
+
+code {
+  padding: 1px 5px;
+}
+
+pre {
+  padding: 8px 12px;
+  overflow-x: auto;
+}
+
+pre > code {
+  border: 0;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+/* Wrapper */
+.wrapper {
+  max-width: calc(var(--content-width) - (var(--spacing-unit) * 2));
+  margin: 0 auto;
+  padding: 0 var(--spacing-unit);
+}
+
+.wrapper.no-margins {
+  margin: 0;
+}

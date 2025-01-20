@@ -5,22 +5,18 @@ collections:
   posts:
     title: Posts
     output: true
-  uploads:
-    title: Uploads
-    output: true
-email: fred@hakilebara.com
-description: 'Hakilebara, I build web products.
+description: 'Hakilebara'
 
-'
 baseurl: ''
-url: http://hakilebara.com
+url: https://hakilebara.com
 twitter_username: hakilebara
 github_username: hakilebara
-permalink: "/post/:year/:month/:day/:title"
+permalink: "/:title"
 markdown: kramdown
-google_analytics: UA-107401182-2
 gems:
 - jekyll-feed
 exclude:
 - Gemfile
 - Gemfile.lock
+exclude:
+  - scripts

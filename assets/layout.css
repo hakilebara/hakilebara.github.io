@@ -1,3 +1,19 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 .l-header {
   background-color: #222;
   color: #FFF;
@@ -6,10 +22,15 @@
 .home,
 .page,
 .post {
-  padding-top: 120px; 
+  padding-top: 40px; 
   @media (max-width: 499px) {
-    padding-top: 30px; 
+    padding-top: 15px; 
   }
+}
+
+.post {
+  margin-left: 15px;
+  max-width: 540px;
 }
 
 .post-list {
@@ -26,7 +47,7 @@
   padding-bottom: 20px;
 }
 .post h1 {
-  font-size: 3.75em;
+  font-size: 2.15em;
   line-height: 1.066em;
   @media (max-width: 499px) {
     font-size: 2.75em;

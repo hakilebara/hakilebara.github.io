@@ -17,7 +17,6 @@
 }
 
 .nav__logo__link {
-  font-weight: 300;
   letter-spacing: 3px;
   text-transform: uppercase;
   transition: .2s;
@@ -35,7 +34,6 @@
 }
 
 .nav__link {
-  font-weight: 300;
   letter-spacing: .5px;    
   margin-left: 50px;
   text-transform: uppercase;
@@ -45,7 +43,6 @@
   }
   @media (max-width: 499px) {
     margin: 0;
-    // margin-bottom: 2px;
     text-align: center;
   }
 }
