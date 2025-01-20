@@ -8,7 +8,7 @@ const notion = new Client({ auth: process.env.NOTION_API_TOKEN })
 const n2m = new NotionToMarkdown({ notionClient: notion, config: { convertImagesToBase64: true } })
 
 const OUTPUT_DIR = '_posts' // Directory to save Markdown files
-const IMAGES_DIR = 'assets/img'
+const IMAGES_DIR = './assets/img'
 const IMAGES_URL_PATH = '/assets/img'
 
 // Custom transformer for image blocks
