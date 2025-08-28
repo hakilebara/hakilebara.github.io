@@ -1,6 +1,9 @@
-_site
+_site/
+assets/img/
 .sass-cache
 .jekyll-metadata
 vendor/
 node_modules/
 .bundle/
+.ignore
+.DS_Store

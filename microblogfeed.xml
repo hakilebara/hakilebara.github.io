@@ -1,0 +1,25 @@
+---
+layout: null
+permalink: /microblogfeed.xml
+---
+
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/assets/xsl/microblog.xsl"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ site.title }} Microblog RSS Feed</title>
+    <description>Use an RSS Reader to subscribe to this Microblog feed</description>
+    <link>{{ site.url }}{{ site.baseurl }}/microblog/</link>
+    <atom:link href="{{ site.url }}{{ site.baseurl }}/microblog.xml" rel="self" type="application/rss+xml"/>
+
+    {% for post in site.microposts limit: 20 %}
+      <item>
+        <title>{{ post.date | date: "%Y-%m-%d %H:%M" }}</title>
+        <description>{{ post.content | strip_html | xml_escape }}</description>
+        <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
+        <link>{{ site.url }}{{ site.baseurl }}{{ post.url }}</link>
+        <guid>{{ site.url }}{{ site.baseurl }}{{ post.url }}</guid>
+      </item>
+    {% endfor %}
+  </channel>
+</rss>

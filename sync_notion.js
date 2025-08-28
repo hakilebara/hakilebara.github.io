@@ -7,7 +7,6 @@ require('dotenv').config()
 const notion = new Client({ auth: process.env.NOTION_API_TOKEN })
 const n2m = new NotionToMarkdown({ notionClient: notion, config: { convertImagesToBase64: true } })
 
-const OUTPUT_DIR = '_posts' // Directory to save Markdown files
 const IMAGES_DIR = 'assets/img'
 
 // Custom transformer for image blocks
@@ -38,7 +37,7 @@ n2m.setCustomTransformer('image', async (block) => {
     }
 
     // return `![${caption}](${urlImagePath})`
-    return `![${caption}](${localImagePath})`
+    return `![${caption}](/${localImagePath})`
   } catch (error) {
     console.error(error)
     return `![Image](${imageUrl})` // Fallback to the original URL if download fails
@@ -46,10 +45,10 @@ n2m.setCustomTransformer('image', async (block) => {
 })
 
 // Fetch data from Notion
-async function fetchNotionData () {
+async function fetchNotionData (databaseId) {
   try {
     const response = await notion.databases.query({
-      database_id: process.env.NOTION_DATABASE_ID,
+      database_id: databaseId,
       filter: {
         property: 'Status', // Adjust this to match your Notion database's status property
         select: { equals: 'Deploy' }
@@ -92,16 +91,17 @@ async function updatePageStatus (pageId) {
 }
 
 // Save Markdown files
-async function saveMarkdown (pages) {
-  if (!fs.existsSync(OUTPUT_DIR)) {
-    fs.mkdirSync(OUTPUT_DIR, { recursive: true })
+async function saveMarkdown (pages, outputDir) {
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir, { recursive: true })
   }
 
   for (const page of pages) {
     const title = page.properties.Name.title[0]?.plain_text || 'untitled'
-    const date = new Date(page.created_time).toISOString().split('T')[0] // Extract creation date
+    const datetime = new Date(page.created_time).toISOString()
+    const date = datetime.split('T')[0] // Extract creation date
     const slug = title.replace(/[^a-z0-9]/gi, '-').toLowerCase()
-    const filename = `${OUTPUT_DIR}/${date}-${slug}.markdown`
+    const filename = `${outputDir}/${date}-${slug}.markdown`
     const markdown = await convertToMarkdown(page)
 
     if (markdown) {
@@ -110,6 +110,7 @@ async function saveMarkdown (pages) {
 title: "${title}"
 id: "${page.id}"
 layout: post
+date: "${datetime}"
 ---
 `
       fs.writeFileSync(filename, frontmatter + markdown, 'utf8')
@@ -124,11 +125,14 @@ layout: post
 // Main function
 async function main () {
   console.log('Fetching data from Notion...')
-  const pages = await fetchNotionData()
-  console.log(`Fetched ${pages.length} pages.`)
+  const blogPages = await fetchNotionData(process.env.NOTION_BLOG_DATABASE_ID)
+  const microblogPages = await fetchNotionData(process.env.NOTION_MICROBLOG_DATABASE_ID)
+  console.log(`Fetched ${blogPages.length} Notion Blog pages.`)
+  console.log(`Fetched ${microblogPages.length} Notion Microblog pages.`)
 
   console.log('Saving markdown files...')
-  await saveMarkdown(pages)
+  await saveMarkdown(blogPages, '_posts')
+  await saveMarkdown(microblogPages, '_microposts')
   console.log('Sync complete!')
 }
 

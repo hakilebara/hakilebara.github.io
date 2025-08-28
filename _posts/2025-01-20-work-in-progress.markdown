@@ -2,6 +2,7 @@
 title: "Work in progress"
 id: "181a97bc-458a-80b3-adde-c0e399eb0dc3"
 layout: post
+date: "2025-01-20T17:58:00.000Z"
 ---
 
 This blog is in the process of building rebuilt. Please stand by.
@@ -16,7 +17,7 @@ This blog is in the process of building rebuilt. Please stand by.
 ### header 3
 
 
-![profile picture image](assets/img/181a97bc-458a-80ff-8530-c979b2cbb1da.png)
+![profile picture image](/assets/img/181a97bc-458a-80ff-8530-c979b2cbb1da.png)
 
 
 ```c++

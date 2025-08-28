@@ -2,9 +2,15 @@
 title: hakilebara
 timezone: UTC
 collections:
+  # Regular blog posts
   posts:
     title: Posts
     output: true
+
+  # Microblog posts 
+  microposts:
+    output: true
+
 description: 'Hakilebara'
 
 baseurl: ''

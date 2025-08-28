@@ -25,6 +25,8 @@ jobs:
         env:
           NOTION_API_TOKEN: ${{ secrets.NOTION_API_TOKEN }}
           NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+          NOTION_BLOG_DATABASE_ID: ${{ secrets.NOTION_BLOG_DATABASE_ID }}
+          NOTION_MICROBLOG_DATABASE_ID: ${{ secrets.NOTION_MICROBLOG_DATABASE_ID }}
         run: node sync_notion.js
 
       - name: Commit and Push Changes
