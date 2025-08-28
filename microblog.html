@@ -3,7 +3,7 @@ layout: microblog
 title: Microblog
 ---
 
-{% for post in site.microposts %}
+{% for post in site.microposts reversed %}
   <article class="microblog_post">
     <img class="avatar" src="/assets/avatar.png" />
     <a class="link" href="#">
