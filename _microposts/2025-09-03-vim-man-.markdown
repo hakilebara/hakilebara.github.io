@@ -1,0 +1,27 @@
+---
+title: "vim-man "
+id: "263a97bc-458a-801e-93b7-eb20c6b25941"
+layout: post
+date: "2025-09-03T13:28:00.000Z"
+---
+
+Today I learned I can get a lot more done while staying inside Vim. I realized that while watching a [Tsoding stream](https://youtu.be/sFYFuBzu9Ow).
+
+
+<u>Reading Man pages in Vim</u>
+
+
+I am using this plugin [https://github.com/vim-utils/vim-man](https://github.com/vim-utils/vim-man).
+
+
+![Default caption](/assets/img/263a97bc-458a-8012-b48a-c1ec33be8848.png)
+
+
+<u>Accessing the terminal in Vim</u>
+
+
+Since its version 8.1 Vim supports running a terminal window. 
+
+
+![Default caption](/assets/img/263a97bc-458a-8072-88e5-ed04d5746ce0.png)
+
