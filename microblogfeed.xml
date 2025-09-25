@@ -12,7 +12,7 @@ permalink: /microblogfeed.xml
     <link>{{ site.url }}{{ site.baseurl }}/microblog/</link>
     <atom:link href="{{ site.url }}{{ site.baseurl }}/microblog.xml" rel="self" type="application/rss+xml"/>
 
-    {% for post in site.microposts limit: 20 %}
+    {% for post in site.microposts reversed limit: 20 %}
       <item>
         <title>{{ post.date | date: "%Y-%m-%d %H:%M" }}</title>
         <description>{{ post.content | strip_html | xml_escape }}</description>
