@@ -1,7 +1,6 @@
 @import url('syntax-highlighting.css');
 @import url('base.css');
 
-
 html, body {
   height: 100%;
 }
@@ -116,4 +115,14 @@ img {
 
 .footer ul > li {
   margin: 0.5rem 0.5rem 0 0;
+}
+
+.post-meta {
+  color: #3C4858;
+  font-size: 18px;
+  text-transform: uppercase;
+
+  .icon {
+    height: 19px;
+  }
 }
