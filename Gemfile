@@ -1,4 +1,4 @@
-source "https://rubygems.org"
+source "https://gem.coop"
 ruby RUBY_VERSION
 
 # Hello! This is where you manage which Jekyll version is used to run.
