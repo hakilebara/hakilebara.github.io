@@ -1,0 +1,12 @@
+---
+title: "gem.coop"
+id: "284a97bc-458a-80fb-9a23-c04e408a9649"
+layout: post
+date: "2025-10-06T15:18:00.000Z"
+---
+
+![Default caption](/assets/img/284a97bc-458a-80c8-808c-d4c20d949a9e.png)
+
+
+[https://github.com/hakilebara/hakilebara.github.io/commit/e37affcbab5e9aba7144af19a3a8207105de912d](https://github.com/hakilebara/hakilebara.github.io/commit/e37affcbab5e9aba7144af19a3a8207105de912d)
+
