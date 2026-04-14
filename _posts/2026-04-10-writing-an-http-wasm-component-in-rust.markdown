@@ -5,10 +5,12 @@ layout: post
 date: "2026-04-10T08:40:00.000Z"
 ---
 
+
+
 **Purpose:** The purpose of this article is to guide you through the creation of a simple Wasm HTTP component.
 
 
-**Motivation:** I wrote this article because I struggle to find resources on how to write HTTP services using Wasm components and the [Wasmtime CLI](https://component-model.bytecodealliance.org/running-components/wasmtime.html#running-http-components-with-wasmtime). 
+**Motivation:** I wrote this article because I struggled to find resources on how to write HTTP services using Wasm components and the [Wasmtime CLI](https://component-model.bytecodealliance.org/running-components/wasmtime.html#running-http-components-with-wasmtime). 
 
 
 **Audience:** Software engineers who are familiar with WebAssembly and have a conceptual understanding of the WebAssembly Component Model. Code in this article will be written in Rust but you don’t need to be familiar with it to follow along.
@@ -32,7 +34,7 @@ The `Wasm32-wasip2` target makes it possible for the Rust compiler to directly c
 
 
 ```rust
-rustup target add Wasm32-wasip2
+rustup target add wasm32-wasip2
 ```
 
 
@@ -151,7 +153,7 @@ The `include` statement includes the imports and exports of another world into t
 This is equivalent to writing the [entire definition](https://wa.dev/wasi:http#types-method) of the `wasi:http/proxy` world into our own:
 
 
-```toml
+```text
 package root:wasm-http-hello-world;
 
 world proxy {
@@ -280,7 +282,7 @@ mod bindings {
 
 
 [`generate!`](https://docs.rs/wit-bindgen/latest/wit_bindgen/macro.generate.html) is a macro that generates Rust bindings at compile time. To avoid polluting the global namespace, we are putting the bindings in their own module.
-It generated the following Rust types we are going to use in our HTTP handler:
+We are going to use the following generated Rust types:
 
 
 | Type                                                                   | Purpose                                         |
@@ -318,7 +320,7 @@ If you have `cargo-expand` installed, you can run `cargo expand` to print the ge
 ![The trait bindings::exports::wasi::http::incoming_handler::Guest](/assets/img/342a97bc-458a-803a-9425-dadc312cb7fd.png)
 
 
-Next, let’s write an implementation of `handle` function:
+Now, we implement the trait:
 
 
 ```rust
@@ -343,7 +345,7 @@ impl bindings::exports::wasi::http::incoming_handler::Guest for Component {
 ```
 
 
-`generate!` also creates an [`export!`](https://docs.rs/wit-bindgen/latest/wit_bindgen/macro.generate.html#exports-the-export-macro) macro (but doesn’t run it). `export!` will use the trait implementation to generate the exported function that Wasmtime will call.
+`generate!` also creates an [`export!`](https://docs.rs/wit-bindgen/latest/wit_bindgen/macro.generate.html#exports-the-export-macro) macro (but doesn’t run it). In turn, `export!` uses the trait implementation to generate the exported function that Wasmtime will call.
 
 
 ```rust
