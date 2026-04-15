@@ -71,6 +71,7 @@ main {
   table {
     border-collapse: collapse;
     width: 100%;
+    margin-bottom: 1rem;
   }
 
   th, td {
