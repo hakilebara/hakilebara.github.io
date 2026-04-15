@@ -24,16 +24,66 @@ p {
   margin-bottom: 15px;
 }
 
-ul,
-ol {
-  list-style: none;
-}
-
 main {
   flex: 1;
   padding: 16px  32px;
 }
 
+.page-content {
+  @media (min-width: 799px) {
+    margin: 0 20%;
+  }
+}
+.post-content {
+
+  h2 {
+    font-size: 1.5em;
+    font-weight: 600;
+    border-bottom: 1px solid #454c54;
+  }
+
+  a {
+    text-underline-offset: .2rem;
+    text-decoration: underline;
+    color: #023b95;
+  }
+
+  code {
+    color: #EB5757;
+    background: rgba(135,131,120,.15);
+  }
+
+  pre code {
+    background: inherit;
+    color: inherit;
+  }
+
+  ul, p, pre {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  li {
+    list-style: disc;
+    margin-left: var(--spacing-unit);
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+  }
+
+  th {
+    background: #f5f5f5;
+    font-weight: bold;
+  }
+}
 
 .microblog {
   display: flex;

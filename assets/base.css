@@ -127,7 +127,7 @@ h2 {
   line-height: 50px;
 }
 
-p {
+p, li {
   font-size: 1.125em;
 }
 
