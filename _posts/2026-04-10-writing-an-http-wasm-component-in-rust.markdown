@@ -5,23 +5,18 @@ layout: post
 date: "2026-04-10T08:40:00.000Z"
 ---
 
+| **Audience**   | Software engineers who are familiar with WebAssembly and have a conceptual understanding of the WebAssembly Component Model. Code in this article will be written in Rust but you don’t need to be familiar with it to follow along.                         |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Purpose**    | The purpose of this article is to guide you through the creation of a simple Wasm HTTP component.                                                                                                                                                            |
+| **Motivation** | I wrote this article because I struggled to find resources on how to write HTTP services using Wasm components and the [Wasmtime CLI](https://component-model.bytecodealliance.org/running-components/wasmtime.html#running-http-components-with-wasmtime).  |
 
 
-**Purpose:** The purpose of this article is to guide you through the creation of a simple Wasm HTTP component.
-
-
-**Motivation:** I wrote this article because I struggled to find resources on how to write HTTP services using Wasm components and the [Wasmtime CLI](https://component-model.bytecodealliance.org/running-components/wasmtime.html#running-http-components-with-wasmtime). 
-
-
-**Audience:** Software engineers who are familiar with WebAssembly and have a conceptual understanding of the WebAssembly Component Model. Code in this article will be written in Rust but you don’t need to be familiar with it to follow along.
-
-
-**Deliverable:** By the end of this article you will :
+ By the end of this article you will :
 
 - write a Wasm component in Rust that answers HTTP GET requests with “Hello World”
 - package your Wasm component as an [OCI artifact](https://tag-runtime.cncf.io/wgs/wasm/deliverables/wasm-oci-artifact/) and push it to the [GitHub Container Registry](https://github.blog/news-insights/product-news/introducing-github-container-registry/)
 
-**Requirements:** This article assumes you have:
+This article assumes you have:
 
 - the rust compiler installed
 - a valid [GitHub Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) with `write:packages` and `read:packages` scopes
@@ -30,10 +25,10 @@ date: "2026-04-10T08:40:00.000Z"
 ## Installing the necessary tools
 
 
-The `Wasm32-wasip2` target makes it possible for the Rust compiler to directly compile projects to the Wasm Components format.
+The `wasm32-wasip2` target makes it possible for the Rust compiler to directly compile projects to the Wasm Components format.
 
 
-```rust
+```text
 rustup target add wasm32-wasip2
 ```
 
@@ -41,7 +36,7 @@ rustup target add wasm32-wasip2
 Our Wasm component will handle requests through Wasmtime's built-in HTTP server.
 
 
-```bash
+```text
 curl https://Wasmtime.dev/install.sh -sSf | bash
 ```
 
@@ -57,7 +52,7 @@ cargo install wkg
 `cargo-expand` (optional) prints fully expanded code, including generated bindings.
 
 
-```rust
+```text
 cargo install cargo-expand
 ```
 
@@ -68,7 +63,7 @@ cargo install cargo-expand
 Create a new Rust project called `wasm-http-hello-world` :
 
 
-```bash
+```text
 cargo new --lib wasm-http-hello-world
 cd wasm-http-hello-world
 ```
@@ -80,7 +75,7 @@ We want to create a Rust library project, as opposed to a Rust command. This is 
 In `Cargo.toml` add the following target configuration:
 
 
-```bash
+```toml
 [lib]
 crate-type = ["cdylib"]
 ```
@@ -107,7 +102,7 @@ Wasm components solve this problem by describing their interfaces in an [Interfa
 At the root of your project folder create a new folder `wit/` and in it create a text file `world.wit`.
 
 
-```bash
+```text
 cd wasm-http-hello-world
 mkdir wit
 touch wit/world.wit
@@ -142,7 +137,7 @@ Below the package declaration, we will add a `world` definition. In WIT, `world`
 Imports are what a component needs and exports are what a component can do.
 
 
-```bash
+```text
 world proxy {
   include wasi:http/proxy@0.2.0;
 }
@@ -200,7 +195,7 @@ package. We now need to fetch this package along with its dependencies.
 At the root of your project directly, run the following command.
 
 
-```bash
+```text
 wkg wit fetch 
 ```
 
@@ -212,7 +207,7 @@ _**Note**__:_ _`wkg`_ _fetches WIT files from_ [_GitHub Package Repository_](htt
 A package is a collections of worlds, interfaces and types. In `wit/deps/` you will find all the packages `wkg` has fetched.
 
 
-```bash
+```text
 .
 ├── Cargo.toml
 ├── src
@@ -243,7 +238,7 @@ Let’s now transform our WIT files into actual Rust functions and types. We wil
 Bindings are generated glue code that implement WIT interfaces in a given language (here Rust) according to the rules of the [Canonical ABI](https://component-model.bytecodealliance.org/advanced/canonical-abi.html).
 
 
-```bash
+```text
 cargo add wit-bindgen
 ```
 
@@ -415,7 +410,7 @@ wasmtime serve -Scli -Shttp target/Wasm32-wasip2/release/wasm-http-hello-world.w
 You can test it with `curl -i` [`localhost:8080`](http://localhost:8080/)
 
 
-```bash
+```text
 HTTP/1.1 200 OK
 transfer-encoding: chunked
 date: Mon, 13 Apr 2026 23:22:20 GMT
@@ -430,7 +425,7 @@ Hello, world!
 At the root of the project, run the following two commands to authenticate, package and publish the component.
 
 
-```bash
+```text
 docker login ghcr.io -u <your GH username>
 wkg oci push ghcr.io/<your-github-username>/wasm-http-hello-world:latest target/Wasm32-wasip2/release/Wasm_http_hello_world.Wasm
 ```
