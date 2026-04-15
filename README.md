@@ -9,6 +9,7 @@ Shoutout to [notion-to-md](https://github.com/souvikinator/notion-to-md) for the
 ```bash
 rbenv install 3.4.1
 rbenv local 3.4.1
+rbenv init
 bundle config set path 'vendor/bundle'
 bundle install
 bundle exec jekyll serve --open-url --livereload
