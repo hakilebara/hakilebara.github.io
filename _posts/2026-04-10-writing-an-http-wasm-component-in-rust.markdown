@@ -184,8 +184,7 @@ world proxy {
 ```
 
 
-## 
-Fetching WIT dependencies
+## Fetching WIT dependencies
 
 
 We just declared in `wit/world.wit` that our component depends on the `wasi:http`
@@ -201,7 +200,7 @@ wkg wit fetch
 
 
 `wkg` looks in the `wit/` directory for a package with a `world` definition. It then fetches the package and its dependencies into a `wit/deps/` directory along with a lock file.
-_**Note**__:_ _`wkg`_ _fetches WIT files from_ [_GitHub Package Repository_](https://github.com/orgs/WebAssembly/packages)[_._](https://opencontainers.org/)
+**Note**_:_ _`wkg`_ _fetches WIT files from_ [_GitHub Package Repository_](https://github.com/orgs/WebAssembly/packages)[_._](https://opencontainers.org/)
 
 
 A package is a collections of worlds, interfaces and types. In `wit/deps/` you will find all the packages `wkg` has fetched.
