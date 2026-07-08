@@ -51,14 +51,6 @@ figure {
   padding: 0;
 }
 
-a {
-  text-decoration: none;
-}
-
-p {
-  margin-bottom: 15px;
-}
-
 body {
   font: var(--base-font-weight) var(--base-font-size)/var(--base-line-height) var(--base-font-family);
   color: var(--text-color);
@@ -372,5 +364,41 @@ img {
 
   .icon {
     height: 19px;
+  }
+}
+
+.landing {
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  p {
+    margin-bottom: 15px;
+    line-height: 1.54;
+  }
+
+  ul {
+    list-style: circle inside;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+}
+
+.posts {
+  .post-list li {
+    padding: 14px;
+  }
+
+  time {
+    font-size: 14px;
+  }
+}
+
+.rss {
+  ul {
+    list-style: circle inside;
   }
 }

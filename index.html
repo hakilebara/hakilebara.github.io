@@ -2,20 +2,27 @@
 layout: default
 ---
 
-<div class="home">
+<div class="landing">
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
+  <h1>Welcome to my blog</h1>
+  <br />
+  <p>Hi,</p>
 
-        <h2>
-          {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
-          <span class="post-meta">{{ post.date | date: date_format }}: </span>
-          <a class="post-link" href="{{ post.url | relative_url }}"> {{ post.title | escape }} </a>
-        </h2>
-      </li>
-    {% endfor %}
+  <p>I am a software engineer with a experience across the stack
+    started my career as a network engineer and then transitioned to Frontend dev,
+    am now a Backend / FullStack engineer with a strong interest in systems engineering.</p>
+  <p>
+    This place is my personal website. I am using it to share my toughts on programming, game development, computer
+    graphics, WebAssembly, etc. whatever crosses my mind really.
+  </p>
+
+  <p>
+    I you have any feedback or request, please feel free to reach out.
+  </p>
+
+  <ul>
+    <li>GitHub: <a target="_blank" href="https://github.com/hakilebara">hakilebara</a></li>
+    <li>Twitter/X: <a target="_blank" href="https://xcancel.com/hakilebara">@hakilebara</a></li>
+    <li>LinkedIn: <a target="_blank" href="https://www.linkedin.com/in/frederic-soumare">frederic-soumare</a></li>
   </ul>
-
-
 </div>
