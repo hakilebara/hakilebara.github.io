@@ -5,8 +5,8 @@ layout: post
 date: "2026-07-15T16:03:00.000Z"
 ---
 
-Using `entr` and `viu` I can live-reload `cargo run` and see get near-instant visual feeback on code I am writing.
+With [`entr`](https://github.com/eradman/entr) and [`viu`](https://github.com/atanunq/viu) I can get instant feedback on image-generating code without leaving the terminal, which is cool.
 
 
-[2026-07-15_17-58-48.mov](https://prod-files-secure.s3.us-west-2.amazonaws.com/d5c5de71-5e60-49fc-bdf1-e3b945db42bb/1a9032e6-5eac-41c1-b6c6-bd5a6a1d5425/2026-07-15_17-58-48.mov?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4664RRX6PHB%2F20260715%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260715T160700Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEGYaCXVzLXdlc3QtMiJIMEYCIQCa9m1x24ENi1a6vbRPXIpoqMa4Yd802cF2AMTLsbr%2BgAIhAIjAFmEcTBiQqP0vPm6n%2FRUUOaMJy%2BQqKiBw8Nuro2cCKv8DCC8QABoMNjM3NDIzMTgzODA1IgxX0I5PUIulexVXfC4q3ANQ3HsGvICyp8SruwIW%2BcuAncqB2LxXtvO2KSWA%2F7pk3D3v%2BesHT5LmecSnxi1MQFxrUv8DqZ3zfvM1E0OHIzOSN7XOuAgJReLSn9tPcEehAHKw5fZnyTd7cP9S6y3U6EYMs53tInO5XsC7p5xXXA4zMyml1lYV5%2BYrOdVIa9CWTEL1acly3uV7b9pjhx1k6YLZJ9hQfzVKDTfv0FlG5UJfxs8MIuY%2BV8i3AK0odtnvKeW7wKj58%2F55AOpNvNuvOXkzpXUYfc8QCkgD159MHsYbc1WYA2Tt23J0zuhl90xTmpPG9HU1%2Fn0upUqiooozguHJCaNkgf55kCjTV5m3lH1eJRmhwrDNJr%2F%2BdgzhEFmVhxbHtraBr24a6Arq7iMgI6tMzB7Vuoa3JLw7DiVpnxp1Z2lbem3qcIOB%2Bt4Xe7dbAYxWRwjDaQU2u1L%2Fa%2FJuVdcrefFgpcSQchR%2B3akhbPOqEaCHCVSWkuoy%2BLQt3t%2FOT8R%2BbLomGbMH5epLf7eQKTUly%2BuQ2dQAdYcBOtPF%2BfUZLNhZfQCMHG3YrcF7IJmxXVJoNo8b5n8owvFKaKHMNYYGnkOEyxjJ0trkt0laa4MV3SKK8eLnSDvOByLf7k%2FnLqohpFlKqb2QEgeNZzDdqN7SBjqkAfrhMwASrpILOTQrclaVKoXh1a8t5ye7rAiL8dhlJ%2FW4nh44BGeCA9DXRQxskPEbZd1wM7I0y52xuxk%2FCcgI%2BZkNEq6Z%2FiA3eJuV8wv71j6xcZ9h8qFHtl9o%2Ff1FqmyAzUnWkTJu%2Beyig4r0VF7x%2BBg6yhDcrEronk6YbuKC2ZSx7IpsYJWz68I8X5HarucAST5EmhiWiuQl2lOfrFAUTBIUTwQQ&X-Amz-Signature=33a4d4b9968e5779f42bed1c4f61e4c89375d55c0fc7859db8b9428ba5ec65a1&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+![Default caption](/assets/img/39ea97bc-458a-80dc-a12b-ccb0e64a2ea3.gif)
 
