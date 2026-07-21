@@ -402,3 +402,13 @@ img {
     list-style: circle inside;
   }
 }
+
+.project-list {
+  list-style: disc inside;
+  margin-left: 16px;
+}
+
+.project-link {
+  text-decoration: underline;
+  color: blue;
+}
