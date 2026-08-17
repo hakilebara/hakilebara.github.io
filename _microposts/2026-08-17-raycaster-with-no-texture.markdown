@@ -5,7 +5,7 @@ layout: post
 date: "2026-08-17T19:38:00.000Z"
 ---
 
-I have wanted to learn the math behind ray casting for long time. This is my first stab at writing one.
+I've always wanted to learn the maths behind ray casting. This is my first stab at writing one.
 
 I learned using this guide from Lode Vandevenne :  [https://lodev.org/cgtutor/raycasting.html](https://lodev.org/cgtutor/raycasting.html)
 
