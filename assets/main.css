@@ -2,7 +2,7 @@
 @import url('syntax-highlighting.css');
 
 :root {
-  --base-font-family: "Arial", serif;
+  --base-font-family: monospace;
   --base-font-size: 16px;
   --base-font-weight: 400;
   --small-font-size: calc(var(--base-font-size) * 0.875);
@@ -55,6 +55,9 @@ body {
   font: var(--base-font-weight) var(--base-font-size)/var(--base-line-height) var(--base-font-family);
   color: var(--text-color);
   background-color: var(--background-color);
+  margin: 0 auto;
+  max-width: 95ch;
+  padding: 4rem 1rem;
 }
 
 img {
@@ -92,7 +95,6 @@ h6 {
 /* RESET:END */
 
 h1 {
-  font-size: 2.75em;
   font-weight: 700;
 }
 
@@ -106,20 +108,13 @@ li {
   font-size: 1.125em;
 }
 
-a {
-  color: #3C4858;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
 .logo {
   padding: 5px 10px;
   background-color: black;
   color: white;
   letter-spacing: 1px;
+  font-family: "Arial", serif;
+  text-decoration: none;
 }
 
 .social-media-list a:hover {
@@ -190,40 +185,13 @@ body {
   flex-direction: column;
 }
 
-.page-content {
-  @media (min-width: 799px) {
-    margin: 0 20%;
-  }
-}
-
-main {
-  flex: 1;
-  padding: 16px 32px;
-}
-
-.header {
-  align-items: center;
-  justify-content: space-between;
-  padding: 40px 32px;
-
-  @media (min-width: 799px) {
-    margin: 0 20%;
-  }
-
-  @media (max-width: 499px) {
-    justify-content: space-around;
-    flex-direction: column;
-    height: 60px;
-    padding: 0;
-  }
-}
-
 .nav {
   margin: 20px 0;
 }
 
 .nav_links {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
 }
 
@@ -296,6 +264,7 @@ main {
 
 .microblog {
   display: flex;
+  font-family: "Arial", serif;
   flex-direction: column;
   align-items: center;
 }
@@ -388,12 +357,20 @@ img {
 }
 
 .posts {
-  .post-list li {
-    padding: 14px;
+  h1 {
+    font-size: 1.4rem;
+    margin-bottom: 14px;
   }
 
-  time {
-    font-size: 14px;
+  .post-list li {
+    margin-bottom: 14px;
+  }
+}
+
+.projects {
+  h1 {
+    font-size: 1.4rem;
+    margin-bottom: 14px;
   }
 }
 
@@ -401,14 +378,4 @@ img {
   ul {
     list-style: circle inside;
   }
-}
-
-.project-list {
-  list-style: disc inside;
-  margin-left: 16px;
-}
-
-.project-link {
-  text-decoration: underline;
-  color: blue;
 }

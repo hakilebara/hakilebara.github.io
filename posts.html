@@ -3,14 +3,13 @@ layout: default
 ---
 
 <div class="posts">
+  <h1>Articles</h1>
   <ul class="post-list">
     {% for post in site.posts %}
     <li>
-      <h2>
-        <a class="post-link" href="{{ post.url | relative_url }}"> {{ post.title | escape }} </a>
-      </h2>
-      {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
+      {% assign date_format = site.minima.date_format | default: "%b %d %Y" %}
       <time class="post-meta">{{ post.date | date: date_format }}</time>
+      <a class="post-link" href="{{ post.url | relative_url }}"> {{ post.title | escape }} </a>
     </li>
     {% endfor %}
   </ul>
