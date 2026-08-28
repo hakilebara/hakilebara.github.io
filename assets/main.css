@@ -213,6 +213,8 @@ body {
     font-size: 1.5em;
     font-weight: 600;
     border-bottom: 1px solid #454c54;
+    margin-bottom: 2.5rem;
+    color: blue;
   }
 
   a {
