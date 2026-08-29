@@ -373,6 +373,13 @@ img {
   }
 }
 
+.talks {
+  h1 {
+    font-size: 1.4rem;
+    margin-bottom: 14px;
+  }
+}
+
 .rss {
   ul {
     list-style: circle inside;
