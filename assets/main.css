@@ -106,6 +106,7 @@ h2 {
 p,
 li {
   font-size: 1.125em;
+  margin-bottom: 14px;
 }
 
 .logo {
@@ -361,10 +362,6 @@ img {
 .posts {
   h1 {
     font-size: 1.4rem;
-    margin-bottom: 14px;
-  }
-
-  .post-list li {
     margin-bottom: 14px;
   }
 }
